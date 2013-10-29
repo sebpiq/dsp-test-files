@@ -1,0 +1,10 @@
+#N canvas 692 277 450 300 10;
+#X obj 135 25 loadbang;
+#X msg 135 47 -0.25;
+#X obj 73 92 expr~ abs($v1 - 0.5) * 4 - 1;
+#X obj 72 70 phasor~ 440;
+#X obj 73 114 abstractions/testCase 4410;
+#X connect 0 0 1 0;
+#X connect 1 0 3 1;
+#X connect 2 0 4 0;
+#X connect 3 0 2 0;

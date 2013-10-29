@@ -1,0 +1,8 @@
+#N canvas 596 217 450 300 10;
+#X obj 50 72 osc~ 440;
+#X obj 50 94 abstractions/testCase 4410;
+#X obj 95 28 loadbang;
+#X msg 95 50 -0.25;
+#X connect 0 0 1 0;
+#X connect 2 0 3 0;
+#X connect 3 0 0 1;

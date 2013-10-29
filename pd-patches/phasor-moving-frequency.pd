@@ -1,0 +1,10 @@
+#N canvas 246 259 450 300 10;
+#X obj 19 18 loadbang;
+#X msg 19 40 220 0 \, 440 100 0;
+#X obj 19 62 vline~;
+#X obj 19 84 phasor~;
+#X obj 19 106 abstractions/testCase 4410;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
