@@ -1,5 +1,5 @@
-#N canvas 314 215 786 485 10;
-#X obj 64 321 soundfiler;
+#N canvas 312 220 786 485 10;
+#X obj 64 337 soundfiler;
 #X obj 97 218 r testName;
 #X obj 162 71 loadbang;
 #X obj 64 277 symbol;
@@ -18,15 +18,16 @@
 generate \, first inlet is the signal to test against. You must also
 send the name of the test case on start of the patch as a message to
 [r testName];
-#X msg 64 299 write -wave -bytes 2 -rate 44100 ../../wavs/\$1.wav DATA;
 #X obj 97 253 symbol;
-#X msg 64 344 \; pd quit;
-#X connect 0 0 18 0;
-#X connect 1 0 17 0;
+#X msg 64 360 \; pd quit;
+#X msg 64 299 write -wave -bytes 2 -rate 44100 ../../test-files/tmp/\$1.wav
+DATA;
+#X connect 0 0 17 0;
+#X connect 1 0 16 0;
 #X connect 2 0 6 0;
 #X connect 2 0 12 0;
 #X connect 2 0 5 0;
-#X connect 3 0 16 0;
+#X connect 3 0 18 0;
 #X connect 4 0 3 0;
 #X connect 7 0 5 0;
 #X connect 8 0 10 0;
@@ -36,5 +37,5 @@ send the name of the test case on start of the patch as a message to
 #X connect 12 1 11 0;
 #X connect 13 0 14 0;
 #X connect 14 0 4 0;
-#X connect 16 0 0 0;
-#X connect 17 0 3 1;
+#X connect 16 0 3 1;
+#X connect 18 0 0 0;
