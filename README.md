@@ -7,7 +7,13 @@ This is a set of reference wav files for testing various dsp stuff. All the file
 Waveforms
 -----------
 
-All the waveforms are generated to 16-bits mono signals.
+All the waveforms test files contain 4410 samples of 16-bits mono signal, with sample rate 44100 Hz.
+
+
+Window functions
+------------------
+
+All the window function test files contain 1024 samples.
 
 
 Building the test files

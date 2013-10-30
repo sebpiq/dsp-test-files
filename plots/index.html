@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Set of reference test files for dsp</title>
+  <script src="js/raphael-min.js"></script>
+  <script src="js/g.raphael-min.js"></script>
+  <script src="js/g.line-min.js"></script>
+  <script src="js/jquery-2.0.3.min.js"></script>
+  <script src="js/underscore-min.js"></script>
+
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: sans-serif;
+    }
+
+    .category {
+      border-bottom: 3px solid #111;
+      margin-top: 4.5em;
+    }
+
+    .testFile {
+      background-color: #111;
+      padding: 1em;
+      margin-bottom: 1em;
+    }
+
+    h3 {
+      margin-top: 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <a href="https://github.com/sebpiq/dsp-test-files"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
+
+  <h1>Set of reference test files for dsp</h1>
+
+  <script>
+    var plotWidth = $(window).width() * 0.95
+      , plotHeight = plotWidth / 10
+
+    $.getJSON('../test-files/index.json', function(testFiles) {
+      _.chain(testFiles)
+        .groupBy(function(testFile) { return testFile.category })
+        .pairs()
+        .forEach(function(pair) {
+          var category = pair[0]
+            , testFiles = pair[1]
+            , categoryContainer = $('<div>', {'class': 'category'}).appendTo('body')
+          $('<h2>').html(category).appendTo(categoryContainer)
+
+          _.forEach(testFiles, function(testFile) {
+            var testContainer = $('<div>', {'class': 'testFile'}).appendTo(categoryContainer)
+              , r = Raphael(testContainer.get(0), plotWidth, plotHeight)
+              , title = $('<h3>', {'class': 'testName'}).prependTo(testContainer).html(testFile.testName)
+
+            $.getJSON('../' + testFile.path, function(data) {
+              r.linechart(0, 0, plotWidth, plotHeight, _.range(data.length), data,
+                {smooth: true, colors: ['#F00', '#0F0', '#FF0'], symbol: ''})
+            })
+          })
+        }).value()
+    })
+  </script>
+</body>
+
+</html> 
